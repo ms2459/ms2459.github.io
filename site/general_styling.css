@@ -21,6 +21,14 @@ h2 {
 	font-size: 2em;
 	font-style: normal;
 }
+
+#question_no{
+	float: right;
+}
+#option1text {
+	float: right;
+}
+
 .description {
 	font-size: 120%;
 	text-align: center;
