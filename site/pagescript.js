@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded",
 							}, 
 
 							a_3: {
-								q_follow: "b",
+								q_follow: "e",
 								event_elim: ["HT", "J", "HZJ", "PV", "HJ"]
 							}, 
 							
@@ -81,7 +81,7 @@ document.addEventListener("DOMContentLoaded",
 							},
 							e_3:{
 								q_follow: "c", 
-								event_elim: ["SS"]
+								event_elim: ["SS", "LS"]
 							}
 		};
 
@@ -166,7 +166,6 @@ document.addEventListener("DOMContentLoaded",
 				};
 			};
 
-
 			return logic_optn;
 
 		};
@@ -207,7 +206,7 @@ document.addEventListener("DOMContentLoaded",
 				  .textContent = question_store.d;
 				document.getElementById("question_no")
 				  .textContent = next_question;
-
+			};
 			if (next_question === "e"){
 				document.getElementById("question_text")
 				  .textContent = question_store.e;
