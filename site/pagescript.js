@@ -8,31 +8,75 @@ document.addEventListener("DOMContentLoaded",
 		// removed from the list of events when each option is chose
 		var logic_flow = {
 							//How much of training for running
-							a_1: ["c", "SS", "LS", "MD", "H", "HZJ", "M"], 
-							a_2: ["b", "MD", "HT", "J"],
-							a_3: ["b", "HT", "J", "HZJ", "PV", "HJ"],
+							a_1: {
+								q_follow: "c",
+								event_elim: ["SS", "LS", "MD", "H", "HZJ", "M"]
+								},
+
+							a_2: {
+								q_follow: "b",
+								event_elim: ["MD", "HT", "J"]
+							}, 
+
+							a_3: {
+								q_follow: "b",
+								event_elim: ["HT", "J", "HZJ", "PV", "HJ"]
+							}, 
 							
 							//levels of running intensity
-							b_1: ["c","SS", "LS", "MD", "H",  "M"], 
-							b_2: ["c","MD"],
-							b_3: ["c","H", "HZJ", "PV"],
-
+							b_1: {
+								q_follow: "c",
+								event_elim: ["SS", "LS", "MD", "H",  "M"]
+							},
+							
+							b_2: {
+								q_follow: "c",
+								event_elim: ["MD"]
+							},
+							 
+							b_3: {
+								q_follow: "c",
+								event_elim: ["H", "HZJ", "PV"]
+							},
+							
 							//strength focus
-							c_1: ["HT"],
-							c_2: ["HT"],
-							c_3: ["MD"], 
+							c_1: {
+								q_follow: "d",
+								event_elim: ["d","HT"]
+							},
+
+							c_2: {
+								q_follow: "d",
+								event_elim: ["HT"]
+							},
+
+							c_3: {
+								q_follow: "d",
+								event_elim: ["MD"]
+							}, 
 
 							//technical focus
-							d_1: ["H", "HT", "J", "HZJ", "PV", "HJ", "M"],
-							d_2: ["PV"],
-							d_3: ["SS", "LS", "MD"]
+							d_1:{
+								q_follow: "end",
+								event_elim: ["H", "HT", "J", "HZJ", "PV", "HJ", "M"]
+							},
+
+							d_2: {
+								q_follow: "end",
+								event_elim: ["PV"]
+							},
+
+							d_3: {
+								q_follow: "end",
+								event_elim: ["SS", "LS", "MD"],
+							}
 		};
 
 		var question_store = {
-								a: "running question",
-								b: "intensity question",
-								c: "strength question",
-								d: "technical question",
+								a: "How much of your training would you prefer to involve running?",
+								b: "How intense would you prefer that running to be?",
+								c: "How much of your training would you prefer to be strength based?",
+								d: "How much of your training would you want to be technical movement patterns?",
 								end: "end screen"
 		};
 
@@ -40,61 +84,61 @@ document.addEventListener("DOMContentLoaded",
 		function choose_elim(question_id, chosen_option){
 			if (question_id === "a"){
 				if (chosen_option === "1"){
-					var logic_array = logic_flow.a_1;					
+					var logic_optn = logic_flow.a_1;					
 				};
 
 				if (chosen_option === "2"){
-					var logic_array = logic_flow.a_2;					
+					var logic_optn = logic_flow.a_2;					
 				};
 
 				if (chosen_option === "3"){
-					var logic_array = logic_flow.a_3;					
+					var logic_optn = logic_flow.a_3;					
 				};
 			};
 
 			if (question_id === "b"){
 				if (chosen_option === "1"){
-					var logic_array = logic_flow.b_1;					
+					var logic_optn = logic_flow.b_1;					
 				};
 
 				if (chosen_option === "2"){
-					var logic_array = logic_flow.b_2;					
+					var logic_optn = logic_flow.b_2;					
 				};
 						
 				if (chosen_option === "3"){
-					var logic_array = logic_flow.b_3;					
+					var logic_optn = logic_flow.b_3;					
 				};
 			};
 
 			if (question_id === "c"){
 				if (chosen_option === "1"){
-					var logic_array = logic_flow.c_1;					
+					var logic_optn = logic_flow.c_1;					
 				};
 
 				if (chosen_option === "2"){
-					var logic_array = logic_flow.c_2;					
+					var logic_optn = logic_flow.c_2;					
 				};
 						
 				if (chosen_option === "3"){
-					var logic_array = logic_flow.c_3;					
+					var logic_optn = logic_flow.c_3;					
 				};
 			};
 
 			if (question_id === "d"){
 				if (chosen_option === "1"){
-					var logic_array = logic_flow.d_1;					
+					var logic_optn = logic_flow.d_1;					
 				};
 
 				if (chosen_option === "2"){
-					var logic_array = logic_flow.d_2;					
+					var logic_optn = logic_flow.d_2;					
 				};
 						
 				if (chosen_option === "3"){
-					var logic_array = logic_flow.d_3;					
+					var logic_optn = logic_flow.d_3;					
 				};
 			};
 
-			return logic_array;
+			return logic_optn;
 
 		};
 
@@ -110,7 +154,7 @@ document.addEventListener("DOMContentLoaded",
 		};
 
 		function change_questions(logic_path){
-			var next_question = logic_path[0];
+			var next_question = logic_path.q_follow;
 			if (next_question === "a"){
 				document.getElementById("question_text")
 				  .textContent = question_store.a;
@@ -144,6 +188,59 @@ document.addEventListener("DOMContentLoaded",
 			
 		};
 
+		function expand_events(remaining_events){
+			for (i=0; i < remaining_events.length; i++ ){
+				if (remaining_events[i] === "MD"){
+					remaining_events[i] = " Middle Distance ";
+				} else if (remaining_events[i] === "LS"){
+					remaining_events[i] = " Long Sprints (400) ";
+				}else if (remaining_events[i] === "SS"){
+					remaining_events[i] = " Short Sprints ";
+				}else if (remaining_events[i] === "H"){
+					remaining_events[i] = " Hurdles  ";
+				}else if (remaining_events[i] === "HT"){
+					remaining_events[i] = "Heavy Throws ";
+				}else if (remaining_events[i] === "J"){
+					remaining_events[i] = "Javelin  ";
+				}else if (remaining_events[i] === "HZJ"){
+					remaining_events[i] = "Horizontal Jumps ";
+				}else if (remaining_events[i] === "PV"){
+					remaining_events[i] = "Pole Vault  ";
+				}else if (remaining_events[i] === "HJ"){
+					remaining_events[i] = "High Jump  ";
+				}else if (remaining_events[i] === "M"){
+					remaining_events[i] = "Multievents ";
+				};
+			};
+			return remaining_events;
+		};
+
+		function make_results_string(remaining_events){
+			for (i=0; i<remaining_events.length; i++){
+				var results_string = results_string + remaining_events[i];
+			};
+			return results_string;
+
+		};
+
+		function end_sequence(remaining_events){
+			document.getElementById("question_text")
+			  .textContent = "The results are in!";
+			document.getElementById("question_no")
+			  .textContent = "Find out more on the squad pages of our website";
+			document.getElementById("option1text").textContent = "";
+			document.getElementById("option2text").textContent = "";
+			document.getElementById("option3text").textContent = "";
+			document.getElementById("qnumber1").textContent = "";
+			document.getElementById("qnumber2").textContent = "";
+			document.getElementById("qnumber3").textContent = "";
+			
+			var wordy_list = expand_events(remaining_events)
+			var wordy_string = make_results_string(wordy_list);
+			document.getElementById("title2")
+			  .textContent = wordy_list;
+		};
+
 		function next_q (event){
 			var chosen_option = this.textContent;
 			// check wheather value is returning as I thought.
@@ -156,13 +253,20 @@ document.addEventListener("DOMContentLoaded",
 
 			//use the retrieved information to decide what to do next
 			var logic_path = choose_elim(question_id, chosen_option);
-			console.log( "logic path is " + logic_path);
+			console.log( "eliminate events: " + logic_path.event_elim);
 			
 			//alter the list of events based on the logic path identified
-			var remaining_events = elim(logic_path);
-			console.log(remaining_events);
-			console.log(document.getElementById("question_text"));
-			change_questions(logic_path);
+			var remaining_events = elim(logic_path.event_elim);
+			console.log("remaining events : " + remaining_events);
+			console.log("next question: " +logic_path.q_follow);
+
+			if( logic_path.q_follow === "end"){
+				end_sequence(remaining_events);
+			} else if (remaining_events.length <= 2){
+   				end_sequence(remaining_events);
+			}else{
+				change_questions(logic_path);
+			}
 
 		};
 		
