@@ -69,12 +69,26 @@ document.addEventListener("DOMContentLoaded",
 							d_3: {
 								q_follow: "end",
 								event_elim: ["SS", "LS", "MD"],
+							},
+
+							e_1:{
+								q_follow: "d", 
+								event_elim: ["MD"]
+							},
+							e_2:{
+								q_follow: "d", 
+								event_elim: []
+							},
+							e_3:{
+								q_follow: "c", 
+								event_elim: ["SS"]
 							}
 		};
 
 		var question_store = {
 								a: "How much of your training would you prefer to involve running?",
 								b: "How intense would you prefer that running to be?",
+								e: "Do you prefer shorter, faster running or longer, more continuos running?",
 								c: "How much of your training would you prefer to be strength based?",
 								d: "How much of your training would you want to be technical movement patterns?",
 								end: "end screen"
@@ -138,6 +152,21 @@ document.addEventListener("DOMContentLoaded",
 				};
 			};
 
+			if (question_id === "e"){
+				if (chosen_option === "1"){
+					var logic_optn = logic_flow.e_1;					
+				};
+
+				if (chosen_option === "2"){
+					var logic_optn = logic_flow.e_2;					
+				};
+						
+				if (chosen_option === "3"){
+					var logic_optn = logic_flow.e_3;					
+				};
+			};
+
+
 			return logic_optn;
 
 		};
@@ -176,6 +205,12 @@ document.addEventListener("DOMContentLoaded",
 			if (next_question === "d"){
 				document.getElementById("question_text")
 				  .textContent = question_store.d;
+				document.getElementById("question_no")
+				  .textContent = next_question;
+
+			if (next_question === "e"){
+				document.getElementById("question_text")
+				  .textContent = question_store.e;
 				document.getElementById("question_no")
 				  .textContent = next_question;
 			};
@@ -227,8 +262,8 @@ document.addEventListener("DOMContentLoaded",
 			document.getElementById("question_text")
 			  .textContent = "The results are in!";
 			document.getElementById("question_no")
-			  .textContent = "Find out more on the squad pages of our website";
-			document.getElementById("option1text").textContent = "";
+			  .textContent = "";
+			document.getElementById("option1text").textContent = "Find out more on the squad pages of our website";
 			document.getElementById("option2text").textContent = "";
 			document.getElementById("option3text").textContent = "";
 			document.getElementById("qnumber1").textContent = "";

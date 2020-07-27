@@ -25,8 +25,8 @@ h2 {
 #question_no{
 	float: right;
 }
-#option1text {
-	float: right;
+#qnumber1{
+	clear: both;
 }
 
 .description {
