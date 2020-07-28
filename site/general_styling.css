@@ -23,6 +23,7 @@ h2 {
 }
 h3 {
 	margin-top: 5px;
+	margin-bottom: 0px;
 	text-align: center;
 	font-size: 1.5em;
 	font-style: normal;
@@ -64,11 +65,12 @@ h4 {
 #extra_description {
 	clear: both;
 	font-style: bold;
-	font-size: 150%;
+	font-size: 120%
 	width: 75%;
 	margin-left: auto;
 	margin-right: auto;
 	text-align: center;
+	margin-bottom: 0px;
 }
 
 }

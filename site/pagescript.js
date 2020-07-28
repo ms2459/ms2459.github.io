@@ -315,10 +315,6 @@ document.addEventListener("DOMContentLoaded",
 			var question_box_text = document.getElementById("question_text");
 			question_box_text.textContent = "The results are in!";
 
-			
-
- 
-
 			document.getElementById("option1text").textContent = "";
 			document.getElementById("option2text").textContent = "";
 			document.getElementById("option3text").textContent = "";
@@ -326,9 +322,9 @@ document.addEventListener("DOMContentLoaded",
 			document.getElementById("qnumber2").textContent = "";
 			document.getElementById("qnumber3").textContent = "";
 
-			document.getElementById("qnumber1").setAttribute( "style", "background-color: white");
-			document.getElementById("qnumber2").setAttribute( "style", "background-color: white");
-			document.getElementById("qnumber3").setAttribute( "style", "background-color: white");
+			document.getElementById("qnumber1").setAttribute( "style", "background-color: white; float:right");
+			document.getElementById("qnumber2").setAttribute( "style", "background-color: white; float:right");
+			document.getElementById("qnumber3").setAttribute( "style", "background-color: white; float:right");
 
 			var wordy_list = expand_events(remaining_events)
 			console.log("wordy list is" + wordy_list);
@@ -340,14 +336,14 @@ document.addEventListener("DOMContentLoaded",
 				document.getElementById("title2")
 				  .textContent = "Social Athlete";
 				document.getElementById("extra_description")
-				  .textContent = "Your choices didn't match an event exaclty, but everyone is welcome at CUAC! Find out more on the squad pages of our website";
+				  .textContent = "Your choices didn't match an event exaclty, but everyone is welcome at CUAC! Find out more on the squad pages of our website:";
 			} else{
 				document.getElementById("title2")
 			      .textContent = wordy_string;
 			    if (remaining_events.length > 3 && (remaining_events[(final_index)] == "Multievents")){
 
 			    	document.getElementById("extra_description")
-			    	  .textContent = "Have you considered multievents? Sounds like you'd get on well with lots of different ones! Find out more on the squad pages of our website";
+			    	  .textContent = "Have you considered multievents? Sounds like you'd get on well with lots of different ones! Find out more on the squad pages of our website:";
 			    }else{
 			    	document.getElementById("extra_description").textContent = "Find out more about your event(s) on the squad pages of our website!";
 			    }
