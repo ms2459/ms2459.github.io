@@ -273,25 +273,25 @@ document.addEventListener("DOMContentLoaded",
 		function expand_events(remaining_events){
 			for (i=0; i < remaining_events.length; i++ ){
 				if (remaining_events[i] === "MD"){
-					remaining_events[i] = " Middle Distance ";
+					remaining_events[i] = " Middle Distance";
 				} else if (remaining_events[i] === "LS"){
-					remaining_events[i] = " Long Sprints (400) ";
+					remaining_events[i] = " Long Sprints (400)";
 				}else if (remaining_events[i] === "SS"){
-					remaining_events[i] = " Short Sprints ";
+					remaining_events[i] = " Short Sprints";
 				}else if (remaining_events[i] === "H"){
-					remaining_events[i] = " Hurdles  ";
+					remaining_events[i] = " Hurdles";
 				}else if (remaining_events[i] === "HT"){
-					remaining_events[i] = "Heavy Throws ";
+					remaining_events[i] = "Heavy Throws";
 				}else if (remaining_events[i] === "J"){
 					remaining_events[i] = "Javelin  ";
 				}else if (remaining_events[i] === "HZJ"){
-					remaining_events[i] = "Horizontal Jumps ";
+					remaining_events[i] = "Horizontal Jumps";
 				}else if (remaining_events[i] === "PV"){
-					remaining_events[i] = "Pole Vault  ";
+					remaining_events[i] = "Pole Vault";
 				}else if (remaining_events[i] === "HJ"){
-					remaining_events[i] = "High Jump  ";
+					remaining_events[i] = "High Jump";
 				}else if (remaining_events[i] === "M"){
-					remaining_events[i] = "Multievents ";
+					remaining_events[i] = "Multievents";
 				};
 			};
 			return remaining_events;
@@ -314,9 +314,9 @@ document.addEventListener("DOMContentLoaded",
 		function end_sequence(remaining_events){
 			var question_box_text = document.getElementById("question_text");
 			question_box_text.textContent = "The results are in!";
-			//question_box_text.setAttribute( "style", "font-size: 150%; text-align: centre");
-		
-			document.getElementById("extra_description").textContent = "Find out more on the squad pages of our website";
+
+			
+
  
 
 			document.getElementById("option1text").textContent = "";
@@ -334,12 +334,24 @@ document.addEventListener("DOMContentLoaded",
 			console.log("wordy list is" + wordy_list);
 			var wordy_string = make_results_string(wordy_list);
 			console.log("wordy string is" +wordy_string);
+			var final_index = remaining_events.length - 1;
+
 			if (remaining_events.length == 0){
 				document.getElementById("title2")
 				  .textContent = "Social Athlete";
+				document.getElementById("extra_description")
+				  .textContent = "Your choices didn't match an event exaclty, but everyone is welcome at CUAC! Find out more on the squad pages of our website";
 			} else{
 				document.getElementById("title2")
 			      .textContent = wordy_string;
+			    if (remaining_events.length > 3 && (remaining_events[(final_index)] == "Multievents")){
+
+			    	document.getElementById("extra_description")
+			    	  .textContent = "Have you considered multievents? Sounds like you'd get on well with lots of different ones! Find out more on the squad pages of our website";
+			    }else{
+			    	document.getElementById("extra_description").textContent = "Find out more about your event(s) on the squad pages of our website!";
+			    }
+			    
 			};
 
 
