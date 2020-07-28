@@ -283,7 +283,7 @@ document.addEventListener("DOMContentLoaded",
 				}else if (remaining_events[i] === "HT"){
 					remaining_events[i] = "Heavy Throws";
 				}else if (remaining_events[i] === "J"){
-					remaining_events[i] = "Javelin  ";
+					remaining_events[i] = "Javelin";
 				}else if (remaining_events[i] === "HZJ"){
 					remaining_events[i] = "Horizontal Jumps";
 				}else if (remaining_events[i] === "PV"){
