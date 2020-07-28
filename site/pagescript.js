@@ -37,7 +37,7 @@ document.addEventListener("DOMContentLoaded",
 							 
 							b_3: {
 								q_follow: "c",
-								event_elim: ["H", "HZJ", "PV"]
+								event_elim: ["HJ", "HZJ", "PV"]
 							},
 							
 							//strength focus
