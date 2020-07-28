@@ -3,6 +3,7 @@ document.addEventListener("DOMContentLoaded",
 		//initialise event list and create copy to be edited
 		var event_list = ["SS", "LS", "MD", "H", "HT", "J", "HZJ", "PV", "HJ", "M"];
 		var my_event_list = event_list.slice();
+		var question_id = "a";
 		
 		// this object will be used to determine what events should be 
 		// removed from the list of events when each option is chose
@@ -58,7 +59,7 @@ document.addEventListener("DOMContentLoaded",
 							//technical focus
 							d_1:{
 								q_follow: "end",
-								event_elim: ["H", "HT", "J", "HZJ", "PV", "HJ", "M"]
+								event_elim: ["H", "HT", "J", "HZJ", "PV", "HJ", "M", "SS"]
 							},
 
 							d_2: {
@@ -92,6 +93,29 @@ document.addEventListener("DOMContentLoaded",
 								c: "How much of your training would you prefer to be strength based?",
 								d: "How much of your training would you want to be technical movement patterns?",
 								end: "end screen"
+		};
+
+		var options_store = { 	a: {_1_: "Please don't make me run",
+									_2_: "I'd like to spend some time running",
+									_3_: "Most or all of my time" 
+								},
+								b: {_1_: "Not too tiring please just small bursts",
+									_2_: "I'm ok to run hard but let me catch my breath in between",
+									_3_: "If you can walk afterwards are you training?" 
+								},
+								e: {_1_: "Shorter and Faster",
+									_2_: "A mix / something in between",
+									_3_: "Longer and more continuos" 
+								},
+								d: {_1_: "No thanks please don't hurt my brain",
+									_2_: "Ok with some technical work but not all the time",
+									_3_: "I'm up for a challenge, the more complex the movement the better!" 
+								},
+								c: {_1_: "Gym is not my vibe",
+									_2_: "I'm ok with including strength training",
+									_3_: "Hand me the weights! The more the better" 
+								}
+
 		};
 
 		//find out where we are in the logic flow so we know what events to eliminate
@@ -186,38 +210,62 @@ document.addEventListener("DOMContentLoaded",
 			if (next_question === "a"){
 				document.getElementById("question_text")
 				  .textContent = question_store.a;
-				document.getElementById("question_no")
-				  .textContent = next_question;
+				document.getElementById("option1text")
+				  .textContent = options_store.a._1_;
+				document.getElementById("option2text")
+				  .textContent = options_store.a._2_;
+				document.getElementById("option3text")
+				  .textContent = options_store.a._3_;
+				question_id = next_question;
 			};	
 			if (next_question === "b"){
 				document.getElementById("question_text")
 				  .textContent = question_store.b;
-				document.getElementById("question_no")
-				  .textContent = next_question;
+				document.getElementById("option1text")
+				  .textContent = options_store.b._1_;
+				document.getElementById("option2text")
+				  .textContent = options_store.b._2_;
+				document.getElementById("option3text")
+				  .textContent = options_store.b._3_;
+				question_id = next_question;
 			};		
 			if (next_question === "c"){
 				document.getElementById("question_text")
 				  .textContent = question_store.c;
-				document.getElementById("question_no")
-				  .textContent = next_question;
+				document.getElementById("option1text")
+				  .textContent = options_store.c._1_;
+				document.getElementById("option2text")
+				  .textContent = options_store.c._2_;
+				document.getElementById("option3text")
+				  .textContent = options_store.c._3_;
+				question_id = next_question;
 			};
 			if (next_question === "d"){
 				document.getElementById("question_text")
 				  .textContent = question_store.d;
-				document.getElementById("question_no")
-				  .textContent = next_question;
+				document.getElementById("option1text")
+				  .textContent = options_store.d._1_;
+				document.getElementById("option2text")
+				  .textContent = options_store.d._2_;
+				document.getElementById("option3text")
+				  .textContent = options_store.d._3_;
+				question_id = next_question;
 			};
 			if (next_question === "e"){
 				document.getElementById("question_text")
 				  .textContent = question_store.e;
-				document.getElementById("question_no")
-				  .textContent = next_question;
+				document.getElementById("option1text")
+				  .textContent = options_store.e._1_;
+				document.getElementById("option2text")
+				  .textContent = options_store.e._2_;
+				document.getElementById("option3text")
+				  .textContent = options_store.e._3_;
+				question_id = next_question;
 			};
 			if (next_question === "end"){
 				document.getElementById("question_text")
 				  .textContent = question_store.end;
-				document.getElementById("question_no")
-				  .textContent = next_question;
+				question_id = next_question;
 			};
 			
 		};
@@ -260,8 +308,7 @@ document.addEventListener("DOMContentLoaded",
 		function end_sequence(remaining_events){
 			document.getElementById("question_text")
 			  .textContent = "The results are in!";
-			document.getElementById("question_no")
-			  .textContent = "";
+
 			document.getElementById("option1text").textContent = "Find out more on the squad pages of our website";
 			document.getElementById("option2text").textContent = "";
 			document.getElementById("option3text").textContent = "";
@@ -279,8 +326,6 @@ document.addEventListener("DOMContentLoaded",
 			var chosen_option = this.textContent;
 			// check wheather value is returning as I thought.
 			// Identify which question we are on
-			var question_id = 
-			  document.getElementById("question_no").textContent; 
 
 			console.log("question id is " + question_id);
 			console.log("chosen option is " +  chosen_option);
