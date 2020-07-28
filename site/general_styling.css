@@ -16,9 +16,22 @@ body {
 h2 {
 	background-color: #a3c1ad;
 	padding: 10px;
-	margin: 5px;
+	margin-top: 5px;
 	text-align: center;
 	font-size: 2em;
+	font-style: normal;
+}
+h3 {
+	margin-top: 5px;
+	text-align: center;
+	font-size: 1.5em;
+	font-style: normal;
+}
+h4 {
+	margin-top: 5px;
+	padding: 10px;
+	text-align: center;
+	font-size: 1.2em;
 	font-style: normal;
 }
 
@@ -29,7 +42,7 @@ h2 {
 	float: left;
 	background-color: #a3c1ad;
 	margin-right: 5px;
-	padding: 5px
+	padding: 5px;
 
 }
 .optn_txt{
@@ -47,19 +60,28 @@ h2 {
 	padding-right: 5px;
 	margin: 5px;
 }
-h2.question {
+
+#extra_description {
+	clear: both;
 	font-style: bold;
+	font-size: 150%;
+	width: 75%;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+}
+
 }
 div.questionbox {
 	background-color: #a3c1ad; 
 	margin: 5px;
 }
+
 .linkbutton{
-	clear: both;
+	clear:both;
 	font-style: bold;
 	font-size: 150%;
 	width: 300px;
-	height: 300px;
 	margin-left: auto;
 	margin-right: auto;
 	text-align: center;

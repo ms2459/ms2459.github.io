@@ -298,28 +298,51 @@ document.addEventListener("DOMContentLoaded",
 		};
 
 		function make_results_string(remaining_events){
+			var results_string = ""
 			for (i=0; i<remaining_events.length; i++){
-				var results_string = results_string + remaining_events[i];
+				if (i == 0){
+					results_string = results_string + remaining_events[i];
+				}else{
+					results_string = results_string + ", " + remaining_events[i]
+				}
+				
 			};
 			return results_string;
 
 		};
 
 		function end_sequence(remaining_events){
-			document.getElementById("question_text")
-			  .textContent = "The results are in!";
+			var question_box_text = document.getElementById("question_text");
+			question_box_text.textContent = "The results are in!";
+			//question_box_text.setAttribute( "style", "font-size: 150%; text-align: centre");
+		
+			document.getElementById("extra_description").textContent = "Find out more on the squad pages of our website";
+ 
 
-			document.getElementById("option1text").textContent = "Find out more on the squad pages of our website";
+			document.getElementById("option1text").textContent = "";
 			document.getElementById("option2text").textContent = "";
 			document.getElementById("option3text").textContent = "";
 			document.getElementById("qnumber1").textContent = "";
 			document.getElementById("qnumber2").textContent = "";
 			document.getElementById("qnumber3").textContent = "";
-			
+
+			document.getElementById("qnumber1").setAttribute( "style", "background-color: white");
+			document.getElementById("qnumber2").setAttribute( "style", "background-color: white");
+			document.getElementById("qnumber3").setAttribute( "style", "background-color: white");
+
 			var wordy_list = expand_events(remaining_events)
+			console.log("wordy list is" + wordy_list);
 			var wordy_string = make_results_string(wordy_list);
-			document.getElementById("title2")
-			  .textContent = wordy_list;
+			console.log("wordy string is" +wordy_string);
+			if (remaining_events.length == 0){
+				document.getElementById("title2")
+				  .textContent = "Social Athlete";
+			} else{
+				document.getElementById("title2")
+			      .textContent = wordy_string;
+			};
+
+
 		};
 
 		function next_q (event){
@@ -339,11 +362,12 @@ document.addEventListener("DOMContentLoaded",
 			console.log("remaining events : " + remaining_events);
 			console.log("next question: " +logic_path.q_follow);
 
+
 			if( logic_path.q_follow === "end"){
 				end_sequence(remaining_events);
 			} else if (remaining_events.length <= 2){
    				end_sequence(remaining_events);
-			}else{
+			} else{
 				change_questions(logic_path);
 			}
 
