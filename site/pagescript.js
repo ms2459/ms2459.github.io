@@ -100,20 +100,20 @@ document.addEventListener("DOMContentLoaded",
 									_3_: "Most or all of my time" 
 								},
 								b: {_1_: "Not too tiring please just small bursts",
-									_2_: "I'm ok to run hard but let me catch my breath in between",
-									_3_: "If you can walk afterwards are you training?" 
+									_2_: "I'm ok to run hard but let me rest too",
+									_3_: "Mad for the lactic I'll chun in a bin" 
 								},
 								e: {_1_: "Shorter and Faster",
 									_2_: "A mix / something in between",
 									_3_: "Longer and more continuos" 
 								},
 								d: {_1_: "No thanks please don't hurt my brain",
-									_2_: "Ok with some technical work but not all the time",
-									_3_: "I'm up for a challenge, the more complex the movement the better!" 
+									_2_: "Some technical work is chill",
+									_3_: "Love it - up for a challenge!" 
 								},
 								c: {_1_: "Gym is not my vibe",
-									_2_: "I'm ok with including strength training",
-									_3_: "Hand me the weights! The more the better" 
+									_2_: "Some strength training is good",
+									_3_: "Hand me the weights now!" 
 								}
 
 		};
