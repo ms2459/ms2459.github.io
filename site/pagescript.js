@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded",
 							
 							//levels of running intensity
 							b_1: {
-								q_follow: "c",
+								q_follow: "d",
 								event_elim: ["SS", "LS", "MD", "H",  "M"]
 							},
 							
@@ -43,7 +43,7 @@ document.addEventListener("DOMContentLoaded",
 							//strength focus
 							c_1: {
 								q_follow: "d",
-								event_elim: ["d","HT"]
+								event_elim: ["HT"]
 							},
 
 							c_2: {
@@ -59,7 +59,7 @@ document.addEventListener("DOMContentLoaded",
 							//technical focus
 							d_1:{
 								q_follow: "end",
-								event_elim: ["H", "HT", "J", "HZJ", "PV", "HJ", "M", "SS"]
+								event_elim: ["H", "HT", "J", "PV", "HJ", "M"]
 							},
 
 							d_2: {
@@ -91,7 +91,7 @@ document.addEventListener("DOMContentLoaded",
 								b: "How intense would you prefer that running to be?",
 								e: "Do you prefer shorter, faster running or longer, more continuos running?",
 								c: "How much of your training would you prefer to be strength based?",
-								d: "How much of your training would you want to be technical movement patterns?",
+								d: "Do you enjoy learning complicated movement patterns?",
 								end: "end screen"
 		};
 
@@ -107,11 +107,11 @@ document.addEventListener("DOMContentLoaded",
 									_2_: "A mix / something in between",
 									_3_: "Longer and more continuos" 
 								},
-								d: {_1_: "No thanks please don't hurt my brain",
-									_2_: "Some technical work is chill",
+								d: {_1_: "Not so keen- please don't hurt my brain",
+									_2_: "Enjoy some technical work in training",
 									_3_: "Love it - up for a challenge!" 
 								},
-								c: {_1_: "Gym is not my vibe",
+								c: {_1_: "Gym isn't really my vibe",
 									_2_: "Some strength training is good",
 									_3_: "Hand me the weights now!" 
 								}
