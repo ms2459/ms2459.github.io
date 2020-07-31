@@ -79,7 +79,7 @@ document.addEventListener("DOMContentLoaded",
 							},
 							e_2:{
 								q_follow: "d", 
-								event_elim: ["SS"]
+								event_elim: ["SS", "MD"]
 							},
 							e_3:{
 								q_follow: "d", 
