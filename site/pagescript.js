@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded",
 
 							a_3: {
 								q_follow: "e",
-								event_elim: ["HT", "J", "HZJ", "PV", "HJ"]
+								event_elim: ["HT", "J", "HZJ", "PV", "HJ", "M"]
 							}, 
 							
 							//levels of running intensity
@@ -31,29 +31,29 @@ document.addEventListener("DOMContentLoaded",
 							},
 							
 							b_2: {
-								q_follow: "c",
+								q_follow: "f",
 								event_elim: ["MD"]
 							},
 							 
 							b_3: {
-								q_follow: "c",
+								q_follow: "d",
 								event_elim: ["HJ", "HZJ", "PV"]
 							},
 							
 							//strength focus
 							c_1: {
-								q_follow: "d",
-								event_elim: ["HT"]
+								q_follow: "g",
+								event_elim: ["HJ", "HT"]
 							},
 
 							c_2: {
-								q_follow: "d",
+								q_follow: "g",
 								event_elim: ["HT"]
 							},
 
 							c_3: {
-								q_follow: "d",
-								event_elim: ["MD"]
+								q_follow: "end",
+								event_elim: ["J", "PV", "HJ"]
 							}, 
 
 							//technical focus
@@ -69,20 +69,49 @@ document.addEventListener("DOMContentLoaded",
 
 							d_3: {
 								q_follow: "end",
-								event_elim: ["SS", "LS", "MD"],
+								event_elim: ["SS", "LS", "MD", "HZJ"],
 							},
 
+							//shorter/longer running
 							e_1:{
 								q_follow: "d", 
-								event_elim: ["MD"]
+								event_elim: ["MD", "LS"]
 							},
 							e_2:{
 								q_follow: "d", 
-								event_elim: []
+								event_elim: ["SS"]
 							},
 							e_3:{
-								q_follow: "c", 
-								event_elim: ["SS", "LS"]
+								q_follow: "d", 
+								event_elim: ["SS", "LS", "H"]
+							},
+
+							//track vs field
+							f_1:{
+								q_follow: "d",
+								event_elim:["HT", "J", "HJ", "PV", "HZJ", "M"]
+							},
+							f_2:{
+								q_follow: "d",
+								event_elim:["SS", "LS", "MD", "H", "HT", "J", "HJ", "PV"]
+							},
+							f_3:{
+								q_follow: "d",
+								event_elim:["SS", "LS", "MD", "H"]
+							},
+
+							//Would you enjoy short sprinting as part of training?
+							g_1:{
+								q_follow: "end",
+								event_elim:["HJ", "PV"]
+							},
+							g_2:{
+								q_follow: "end",
+								event_elim:["PV"]
+							},
+							g_3:{
+								q_follow: "end",
+								event_elim:[""]
 							}
 		};
 
@@ -90,14 +119,17 @@ document.addEventListener("DOMContentLoaded",
 								a: "How much of your training would you prefer to involve running?",
 								b: "How intense would you prefer that running to be?",
 								e: "Do you prefer shorter, faster running or longer, more continuos running?",
-								c: "How much of your training would you prefer to be strength based?",
+								c: "Which of the following would best describe you?",
 								d: "Do you enjoy learning complicated movement patterns?",
+								f: "Do you know already if you want to do a track of field event?",
+								g: "How much would you enjoy doing some sprinting as part of training?",
+
 								end: "end screen"
 		};
 
-		var options_store = { 	a: {_1_: "Please don't make me run",
-									_2_: "I'd like to spend some time running",
-									_3_: "Most or all of my time" 
+		var options_store = { 	a: {_1_: "Not so keen - 25% or less",
+									_2_: "Probably around half or more of training",
+									_3_: "Large majority of my time" 
 								},
 								b: {_1_: "Not too tiring please just small bursts",
 									_2_: "I'm ok to run hard but let me rest too",
@@ -111,83 +143,126 @@ document.addEventListener("DOMContentLoaded",
 									_2_: "Enjoy some technical work in training",
 									_3_: "Love it - up for a challenge!" 
 								},
-								c: {_1_: "Gym isn't really my vibe",
-									_2_: "Some strength training is good",
-									_3_: "Hand me the weights now!" 
+								c: {_1_: "Speedy and explosive",
+									_2_: "Springy and strong",
+									_3_: "Strong and explosive" 
+								},
+								f: {_1_: "Definitely just track for me",
+									_2_: "Something in between...",
+									_3_: "No events with a starting gun please!" 
+								},
+								g: {_1_: "Wouldn't be my favourite",
+									_2_: "It would be ok!",
+									_3_: "Think I would enjoy that yes!" 
 								}
-
 		};
 
 		//find out where we are in the logic flow so we know what events to eliminate
 		function choose_elim(question_id, chosen_option){
-			if (question_id === "a"){
-				if (chosen_option === "1"){
-					var logic_optn = logic_flow.a_1;					
-				};
+			switch(question_id){
+				case "a":
+					switch(chosen_option){
+						case "1":
+						var logic_optn = logic_flow.a_1;
+						break;
 
-				if (chosen_option === "2"){
-					var logic_optn = logic_flow.a_2;					
-				};
+						case "2":
+						var logic_optn = logic_flow.a_2;	
+						break;		
 
-				if (chosen_option === "3"){
-					var logic_optn = logic_flow.a_3;					
-				};
-			};
+						case "3":
+						var logic_optn = logic_flow.a_3;					
+					};
+				break;
 
-			if (question_id === "b"){
-				if (chosen_option === "1"){
-					var logic_optn = logic_flow.b_1;					
-				};
+				case "b":
+					switch(chosen_option){
+						case "1":
+						var logic_optn = logic_flow.b_1;
+						break;
 
-				if (chosen_option === "2"){
-					var logic_optn = logic_flow.b_2;					
-				};
-						
-				if (chosen_option === "3"){
-					var logic_optn = logic_flow.b_3;					
-				};
-			};
+						case "2":
+						var logic_optn = logic_flow.b_2;	
+						break;		
 
-			if (question_id === "c"){
-				if (chosen_option === "1"){
-					var logic_optn = logic_flow.c_1;					
-				};
+						case "3":
+						var logic_optn = logic_flow.b_3;					
+					};	
+				break;
 
-				if (chosen_option === "2"){
-					var logic_optn = logic_flow.c_2;					
-				};
-						
-				if (chosen_option === "3"){
-					var logic_optn = logic_flow.c_3;					
-				};
-			};
+				case "c":
+					switch(chosen_option){
+						case "1":
+						var logic_optn = logic_flow.c_1;
+						break;
 
-			if (question_id === "d"){
-				if (chosen_option === "1"){
-					var logic_optn = logic_flow.d_1;					
-				};
+						case "2":
+						var logic_optn = logic_flow.c_2;	
+						break;		
 
-				if (chosen_option === "2"){
-					var logic_optn = logic_flow.d_2;					
-				};
-						
-				if (chosen_option === "3"){
-					var logic_optn = logic_flow.d_3;					
-				};
-			};
+						case "3":
+						var logic_optn = logic_flow.c_3;					
+					};	
+				break;
 
-			if (question_id === "e"){
-				if (chosen_option === "1"){
-					var logic_optn = logic_flow.e_1;					
-				};
+				case "d":
+					switch(chosen_option){
+						case "1":
+						var logic_optn = logic_flow.d_1;
+						break;
 
-				if (chosen_option === "2"){
-					var logic_optn = logic_flow.e_2;					
-				};
-						
-				if (chosen_option === "3"){
-					var logic_optn = logic_flow.e_3;					
-				};
+						case "2":
+						var logic_optn = logic_flow.d_2;	
+						break;		
+
+						case "3":
+						var logic_optn = logic_flow.d_3;					
+					};	
+				break;
+
+				case "e":
+					switch(chosen_option){
+						case "1":
+						var logic_optn = logic_flow.e_1;
+						break;
+
+						case "2":
+						var logic_optn = logic_flow.e_2;	
+						break;		
+
+						case "3":
+						var logic_optn = logic_flow.e_3;					
+					};	
+				break;
+
+				case "f":
+					switch(chosen_option){
+						case "1":
+						var logic_optn = logic_flow.f_1;
+						break;
+
+						case "2":
+						var logic_optn = logic_flow.f_2;	
+						break;		
+
+						case "3":
+						var logic_optn = logic_flow.f_3;					
+					};	
+				break;
+
+				case "g":
+					switch(chosen_option){
+						case "1":
+						var logic_optn = logic_flow.g_1;
+						break;
+
+						case "2":
+						var logic_optn = logic_flow.g_2;	
+						break;		
+
+						case "3":
+						var logic_optn = logic_flow.g_3;					
+					};	
 			};
 
 			return logic_optn;
@@ -207,7 +282,8 @@ document.addEventListener("DOMContentLoaded",
 
 		function change_questions(logic_path){
 			var next_question = logic_path.q_follow;
-			if (next_question === "a"){
+			switch(next_question){
+				case "a":
 				document.getElementById("question_text")
 				  .textContent = question_store.a;
 				document.getElementById("option1text")
@@ -217,8 +293,9 @@ document.addEventListener("DOMContentLoaded",
 				document.getElementById("option3text")
 				  .textContent = options_store.a._3_;
 				question_id = next_question;
-			};	
-			if (next_question === "b"){
+				break;
+
+				case "b":
 				document.getElementById("question_text")
 				  .textContent = question_store.b;
 				document.getElementById("option1text")
@@ -228,8 +305,9 @@ document.addEventListener("DOMContentLoaded",
 				document.getElementById("option3text")
 				  .textContent = options_store.b._3_;
 				question_id = next_question;
-			};		
-			if (next_question === "c"){
+				break;
+
+				case "c":
 				document.getElementById("question_text")
 				  .textContent = question_store.c;
 				document.getElementById("option1text")
@@ -239,8 +317,9 @@ document.addEventListener("DOMContentLoaded",
 				document.getElementById("option3text")
 				  .textContent = options_store.c._3_;
 				question_id = next_question;
-			};
-			if (next_question === "d"){
+				break;
+
+				case "d":
 				document.getElementById("question_text")
 				  .textContent = question_store.d;
 				document.getElementById("option1text")
@@ -250,8 +329,9 @@ document.addEventListener("DOMContentLoaded",
 				document.getElementById("option3text")
 				  .textContent = options_store.d._3_;
 				question_id = next_question;
-			};
-			if (next_question === "e"){
+				break;
+
+				case "e":
 				document.getElementById("question_text")
 				  .textContent = question_store.e;
 				document.getElementById("option1text")
@@ -261,13 +341,38 @@ document.addEventListener("DOMContentLoaded",
 				document.getElementById("option3text")
 				  .textContent = options_store.e._3_;
 				question_id = next_question;
-			};
-			if (next_question === "end"){
+				break;
+
+				case "f":
+				document.getElementById("question_text")
+				  .textContent = question_store.f;
+				document.getElementById("option1text")
+				  .textContent = options_store.f._1_;
+				document.getElementById("option2text")
+				  .textContent = options_store.f._2_;
+				document.getElementById("option3text")
+				  .textContent = options_store.f._3_;
+				question_id = next_question;
+				break;
+
+				case "g":
+				document.getElementById("question_text")
+				  .textContent = question_store.g;
+				document.getElementById("option1text")
+				  .textContent = options_store.g._1_;
+				document.getElementById("option2text")
+				  .textContent = options_store.g._2_;
+				document.getElementById("option3text")
+				  .textContent = options_store.g._3_;
+				question_id = next_question;
+				break;
+
+				case "end":
 				document.getElementById("question_text")
 				  .textContent = question_store.end;
 				question_id = next_question;
+
 			};
-			
 		};
 
 		function expand_events(remaining_events){
@@ -373,7 +478,7 @@ document.addEventListener("DOMContentLoaded",
 
 			if( logic_path.q_follow === "end"){
 				end_sequence(remaining_events);
-			} else if (remaining_events.length <= 2){
+			} else if (remaining_events.length < 2){
    				end_sequence(remaining_events);
 			} else{
 				change_questions(logic_path);
