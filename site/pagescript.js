@@ -106,12 +106,25 @@ document.addEventListener("DOMContentLoaded",
 								event_elim:["HJ", "PV"]
 							},
 							g_2:{
-								q_follow: "end",
-								event_elim:["PV"]
+								q_follow: "h",
+								event_elim:[""]
 							},
 							g_3:{
-								q_follow: "end",
+								q_follow: "h",
 								event_elim:[""]
+							},
+
+							h_1:{
+								q_follow: "end",
+								event_elim:["PV, HJ"]
+							},
+							h_2:{
+								q_follow: "end",
+								event_elim:[]
+							},
+							h_3:{
+								q_follow: "end",
+								event_elim:["J"]
 							}
 		};
 
@@ -121,8 +134,9 @@ document.addEventListener("DOMContentLoaded",
 								e: "Do you prefer shorter, faster running or longer, more continuos running?",
 								c: "Which of the following would best describe you?",
 								d: "Do you enjoy learning complicated movement patterns?",
-								f: "Do you know already if you want to do a track of field event?",
+								f: "Do you know already if you want to do a track or field event?",
 								g: "How much would you enjoy doing some sprinting as part of training?",
+								h: "Would you say you have stronger arms, legs or both?",
 
 								end: "end screen"
 		};
@@ -154,6 +168,10 @@ document.addEventListener("DOMContentLoaded",
 								g: {_1_: "Wouldn't be my favourite",
 									_2_: "It would be ok!",
 									_3_: "Think I would enjoy that yes!" 
+								},
+								h: {_1_: "My arms are stronger",
+									_2_: "Both!",
+									_3_: "Mostly legs" 
 								}
 		};
 
@@ -263,6 +281,21 @@ document.addEventListener("DOMContentLoaded",
 						case "3":
 						var logic_optn = logic_flow.g_3;					
 					};	
+				break;
+
+				case "h":
+					switch(chosen_option){
+						case "1":
+						var logic_optn = logic_flow.h_1;
+						break;
+
+						case "2":
+						var logic_optn = logic_flow.h_2;	
+						break;		
+
+						case "3":
+						var logic_optn = logic_flow.h_3;					
+					};	
 			};
 
 			return logic_optn;
@@ -367,6 +400,18 @@ document.addEventListener("DOMContentLoaded",
 				question_id = next_question;
 				break;
 
+				case "h":
+				document.getElementById("question_text")
+				  .textContent = question_store.h;
+				document.getElementById("option1text")
+				  .textContent = options_store.h._1_;
+				document.getElementById("option2text")
+				  .textContent = options_store.h._2_;
+				document.getElementById("option3text")
+				  .textContent = options_store.h._3_;
+				question_id = next_question;
+				break;
+
 				case "end":
 				document.getElementById("question_text")
 				  .textContent = question_store.end;
@@ -445,10 +490,10 @@ document.addEventListener("DOMContentLoaded",
 			} else{
 				document.getElementById("title2")
 			      .textContent = wordy_string;
-			    if (remaining_events.length > 3 && (remaining_events[(final_index)] == "Multievents")){
+			    if (remaining_events[(final_index)] == "Multievents"){
 
 			    	document.getElementById("extra_description")
-			    	  .textContent = "Have you considered multievents? Sounds like you'd get on well with lots of different ones! Find out more on the squad pages of our website:";
+			    	  .textContent = "Have you considered multievents? Sounds like you'd get on well with lots of different training! Find out more on the squad pages of our website.";
 			    }else{
 			    	document.getElementById("extra_description").textContent = "Find out more about your event(s) on the squad pages of our website!";
 			    }
